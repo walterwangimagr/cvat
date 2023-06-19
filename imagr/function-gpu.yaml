@@ -1,0 +1,48 @@
+metadata:
+  name: micro-controller
+  namespace: cvat
+  annotations:
+    name: micro-controller
+    type: detector
+    framework: pytorch
+    spec: |
+      [
+        { "id": 0, "name": "item" }
+      ]
+
+spec:
+  description: YOLO v5 via pytorch hub
+  runtime: 'python:3.6'
+  handler: main:handler
+  eventTimeout: 30s
+  build:
+    image: cvat.pth.ultralytics.yolov5
+    baseImage: ultralytics/yolov5:latest
+
+    directives:
+      preCopy:
+        - kind: USER
+          value: root
+        - kind: RUN
+          value: apt update && apt install --no-install-recommends -y libglib2.0-0
+        - kind: WORKDIR
+          value: /opt/nuclio
+
+  triggers:
+    myHttpTrigger:
+      maxWorkers: 1
+      kind: 'http'
+      workerAvailabilityTimeoutMilliseconds: 10000
+      attributes:
+        maxRequestBodySize: 33554432 # 32MB
+
+  resources:
+    limits:
+      nvidia.com/gpu: 1
+
+  platform:
+    attributes:
+      restartPolicy:
+        name: always
+        maximumRetryCount: 3
+      mountMode: volume
