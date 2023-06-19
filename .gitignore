@@ -1,3 +1,5 @@
+# ignore checkpoint 
+*.pt
 # Project Specific
 /data/
 /models/
