@@ -20,7 +20,7 @@ docker compose -f docker-compose-mount.yml -f components/serverless/docker-compo
 to stop 
 
 ```bash
-docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml down
+docker compose -f docker-compose-mount.yml -f components/serverless/docker-compose.serverless.yml down
 ```
 
 
