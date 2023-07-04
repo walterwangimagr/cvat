@@ -52,9 +52,15 @@ to deploy
 nuctl deploy --project-name cvat \
   --path serverless/pytorch/ultralytics/yolov5/imagr \
   --platform local \
-  --file serverless/pytorch/ultralytics/yolov5/nuclio/function-gpu.yaml
+  --file serverless/pytorch/ultralytics/yolov5/imagr/function-gpu.yaml
 ```
 
 # Mount local dir 
 
 https://opencv.github.io/cvat/docs/administration/basics/installation/#share-path
+
+
+
+# Serverless 
+
+https://opencv.github.io/cvat/docs/manual/advanced/serverless-tutorial/

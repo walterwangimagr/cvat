@@ -90,7 +90,7 @@ const defaultKeyMap = ({
     DELETE_OBJECT: {
         name: 'Delete object',
         description: 'Delete an active object. Use shift to force delete of locked objects',
-        sequences: ['del', 'shift+del'],
+        sequences: ['del', 'shift+del', 'r'],
         action: 'keydown',
         applicable: [DimensionType.DIMENSION_2D, DimensionType.DIMENSION_3D],
     },
